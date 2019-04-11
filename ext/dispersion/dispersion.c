@@ -43,8 +43,8 @@ void sort_array(VALUE array, unsigned long array_length) {
   for(ii = 0; ii < array_length - 1; ii++) {
     for(jj = 0; jj < array_length - ii - 1; jj++) {
       if(rb_num2dbl(rb_ary_entry(array, jj)) > rb_num2dbl(rb_ary_entry(array, jj + 1))) {
-        temp = rb_ary_entry(array, jj);
-        rb_ary_store(array, jj, rb_ary_entry(array, jj + 1));
+        temp = rb_num2dbl(rb_ary_entry(array, jj));
+        rb_ary_store(array, jj, rb_num2dbl(rb_ary_entry(array, jj + 1)));
         rb_ary_store(array, jj + 1, temp);
       }
     }
