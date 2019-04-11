@@ -30,7 +30,7 @@ double calculate_median(VALUE array, unsigned long array_length) {
   unsigned long n;
   sort_array(array, array_length);
   n = (array_length + 1) / 2 - 1;
-  return array[n];
+  return rb_num2dbl(rb_ary_entry(array, n));
 }
 
 void swap(int *p, int *q) {
@@ -41,11 +41,11 @@ void swap(int *p, int *q) {
 }
 
 void sort_array(VALUE array, unsigned long array_length) {
-   int ii, jj, temp;
+   unsigned long ii, jj, temp;
 
    for(ii = 0; ii < array_length - 1; ii++) {
       for(jj = 0; jj < array_length - ii - 1; jj++) {
-         if(array[jj] > array[jj + 1])
+         if(rb_num2dbl(rb_ary_entry(array, jj)) > rb_num2dbl(rb_ary_entry(array, jj + 1)))
             swap(&array[jj], &array[jj + 1]);
       }
    }
