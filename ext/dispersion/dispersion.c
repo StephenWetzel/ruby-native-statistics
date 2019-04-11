@@ -49,7 +49,7 @@ VALUE sort_array(VALUE array, unsigned long array_length) {
     for(jj = 0; jj < array_length - ii - 1; jj++) {
        if(rb_num2dbl(rb_ary_entry(array, jj)) > rb_num2dbl(rb_ary_entry(array, jj + 1)))
           // swap(array, jj, jj + 1);
-          t = rb_num2dbl(rb_ary_entry(array, jj));
+          t = rb_ary_entry(array, jj);
           rb_ary_store(array, jj, rb_ary_entry(array, jj + 1));
           rb_ary_store(array, jj + 1, t);
     }
