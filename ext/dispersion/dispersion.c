@@ -48,7 +48,6 @@ void sort_array(VALUE array, unsigned long array_length) {
       }
     }
   }
-  return array;
 }
 
 double calculate_total_distance_from_mean(VALUE array, unsigned long array_length) {
