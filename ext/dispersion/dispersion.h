@@ -7,5 +7,5 @@ VALUE rb_sample_variance(VALUE self);
 VALUE rb_population_variance(VALUE self);
 double calculate_mean(VALUE array, unsigned long array_length);
 double calculate_total_distance_from_mean(VALUE array, unsigned long array_length);
-void swap(int *p, int *q);
+void swap(VALUE array, int p, int q);
 void sort_array(VALUE array, unsigned long array_length);
