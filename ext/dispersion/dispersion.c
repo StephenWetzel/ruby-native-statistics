@@ -29,6 +29,8 @@ double calculate_mean(VALUE array, unsigned long array_length) {
 double calculate_median(VALUE array, unsigned long array_length) {
   unsigned long n;
   sort_array(array, array_length);
+  printf(array);
+  printf(n);
   n = (array_length + 1) / 2 - 1;
   return rb_num2dbl(rb_ary_entry(array, n));
 }
