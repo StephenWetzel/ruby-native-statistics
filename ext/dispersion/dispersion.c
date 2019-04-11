@@ -28,7 +28,8 @@ double calculate_mean(VALUE array, unsigned long array_length) {
 
 double calculate_median(VALUE array, unsigned long array_length) {
   unsigned long n;
-  // sort_array(array, array_length);
+  VALUE sorted_array;
+  sorted_array = sort_array(array, array_length);
   n = (array_length + 1) / 2 - 1;
   return rb_num2dbl(rb_ary_entry(array, n));
 }
@@ -40,15 +41,16 @@ void swap(VALUE array, int p, int q) {
   rb_ary_store(array, q, t);
 }
 
-void sort_array(VALUE array, unsigned long array_length) {
-   unsigned long ii, jj, temp;
+VALUE sort_array(VALUE array, unsigned long array_length) {
+  unsigned long ii, jj, temp;
 
-   for(ii = 0; ii < array_length - 1; ii++) {
-      for(jj = 0; jj < array_length - ii - 1; jj++) {
-         if(rb_num2dbl(rb_ary_entry(array, jj)) > rb_num2dbl(rb_ary_entry(array, jj + 1)))
-            swap(array, jj, jj + 1);
-      }
-   }
+  for(ii = 0; ii < array_length - 1; ii++) {
+    for(jj = 0; jj < array_length - ii - 1; jj++) {
+       if(rb_num2dbl(rb_ary_entry(array, jj)) > rb_num2dbl(rb_ary_entry(array, jj + 1)))
+          swap(array, jj, jj + 1);
+    }
+  }
+  return array;
 }
 
 double calculate_total_distance_from_mean(VALUE array, unsigned long array_length) {
