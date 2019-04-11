@@ -37,11 +37,12 @@ double calculate_median(VALUE array, unsigned long array_length) {
 }
 
 void sort_array(VALUE array, unsigned long array_length) {
-  unsigned long ii, jj, temp;
+  unsigned long ii, jj;
+  double temp;
 
   for(ii = 0; ii < array_length - 1; ii++) {
     for(jj = 0; jj < array_length - ii - 1; jj++) {
-      if(rb_ary_entry(array, jj) > rb_ary_entry(array, jj + 1)) {
+      if(rb_num2dbl(rb_ary_entry(array, jj)) > rb_num2dbl(rb_ary_entry(array, jj + 1))) {
         temp = rb_ary_entry(array, jj);
         rb_ary_store(array, jj, rb_ary_entry(array, jj + 1));
         rb_ary_store(array, jj + 1, temp);
