@@ -31,21 +31,20 @@ double calculate_median(VALUE array, unsigned long array_length) {
   sort_array(array, array_length);
   n = (array_length + 1) / 2 - 1;
   if (array_length % 2 == 0) {
-    return rb_num2dbl((rb_ary_entry(array, n) + rb_ary_entry(array, n + 1)) / 2.0)
+    return rb_num2dbl((rb_ary_entry(array, n) + rb_ary_entry(array, n + 1)) / 2.0);
   }
   return rb_num2dbl(rb_ary_entry(array, n));
 }
 
 void sort_array(VALUE array, unsigned long array_length) {
   unsigned long ii, jj, temp;
-  int t, p, q;
 
   for(ii = 0; ii < array_length - 1; ii++) {
     for(jj = 0; jj < array_length - ii - 1; jj++) {
       if(rb_ary_entry(array, jj) > rb_ary_entry(array, jj + 1)) {
-        t = rb_ary_entry(array, jj);
+        temp = rb_ary_entry(array, jj);
         rb_ary_store(array, jj, rb_ary_entry(array, jj + 1));
-        rb_ary_store(array, jj + 1, t);
+        rb_ary_store(array, jj + 1, temp);
       }
     }
   }
