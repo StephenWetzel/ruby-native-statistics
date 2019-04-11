@@ -12,12 +12,12 @@ void Init_dispersion() {
   rb_define_method(DispersionModule, "median", rb_median, 0);
 }
 
-double calculate_mean(VALUE array, unsigned long array_length){
+double calculate_mean(VALUE array, unsigned long array_length) {
   unsigned long i;
   double total = 0;
   double mean = 0;
 
-  for(i = 0; i < array_length; i++){
+  for(i = 0; i < array_length; i++) {
     total += rb_num2dbl(rb_ary_entry(array, i));
   }
 
@@ -26,11 +26,11 @@ double calculate_mean(VALUE array, unsigned long array_length){
   return mean;
 }
 
-double calculate_median(VALUE array, unsigned long array_length){
+double calculate_median(VALUE array, unsigned long array_length) {
   int n;
   sort_array(array);
-  n = (array_length + 1) / 2 - 1
-  return array[n]
+  n = (array_length + 1) / 2 - 1;
+  return array[n];
 }
 
 void swap(int *p, int *q) {
@@ -40,18 +40,18 @@ void swap(int *p, int *q) {
    *q = t;
 }
 
-VALUE sort_array(VALUE array, unsigned long array_length){
+void sort_array(VALUE array, unsigned long array_length) {
    int ii, jj, temp;
 
    for(ii = 0; ii < n-1; ii++) {
       for(jj = 0; jj < n-ii-1; jj++) {
-         if(a[jj] > a[jj+1])
-            swap(&a[jj], &a[jj+1]);
+         if(array[jj] > array[jj+1])
+            swap(&array[jj], &array[jj+1]);
       }
    }
 }
 
-double calculate_total_distance_from_mean(VALUE array, unsigned long array_length){
+double calculate_total_distance_from_mean(VALUE array, unsigned long array_length) {
   unsigned long i;
   double mean = 0;
   double total_distance_from_mean = 0;
