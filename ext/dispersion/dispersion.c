@@ -146,6 +146,6 @@ VALUE rb_median(VALUE self) {
     rb_raise(rb_eRangeError, "array must have at least one element");
   }
 
-  return DBL2NUM(calculate_median(self, array_length));
+  return DBL2NUM(calculate_median(rb_ary_dup(self), array_length));
 }
 
